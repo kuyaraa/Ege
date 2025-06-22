@@ -1,0 +1,26 @@
+{% include 'header.html' %}
+
+<div class="dashboard-container">
+  <div class="user-info">
+    <h2>Добро пожаловать, {{ session['user_name'] }}!</h2>
+    <p><strong>Email:</strong> {{ session.get('user_email', 'Не указан') }}</p>
+    <p><strong>Роль:</strong> {{ session.get('user_role', 'user') }}</p>
+    <!-- Добавьте дополнительную информацию по необходимости -->
+  </div>
+  <div class="progress-info">
+    <h3>Ваш прогресс обучения:</h3>
+    <div class="progress">
+       <div class="progress-bar" role="progressbar" style="width: {{ progress_percent }}%;" aria-valuenow="{{ progress_percent }}" aria-valuemin="0" aria-valuemax="100">
+         {{ progress_percent }}%
+       </div>
+    </div>
+    <p>Завершено заданий: {{ progress_value }}</p>
+  </div>
+</div>
+
+<div class="navigation mt-4">
+  <a href="{{ url_for('subjects') }}" class="btn btn-primary">Перейти к предметам</a>
+  <a href="{{ url_for('results') }}" class="btn btn-secondary">Просмотреть результаты</a>
+</div>
+
+{% include 'footer.html' %}

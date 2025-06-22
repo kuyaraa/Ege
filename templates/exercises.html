@@ -1,0 +1,14 @@
+{% include 'header.html' %}
+<div class="container">
+    <h2>Задания по предмету</h2>
+    <ul class="exercise-list">
+        {% for exercise in exercises %}
+        <li>
+            <h4>{{ exercise.title }}</h4>
+            <p>{{ exercise.description }}</p>
+            <a href="{{ url_for('exercise_detail', exercise_id=exercise.id) }}" class="btn">Выполнить задание</a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% include 'footer.html' %}

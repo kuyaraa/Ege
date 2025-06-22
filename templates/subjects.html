@@ -1,0 +1,14 @@
+{% include 'header.html' %}
+<div class="container">
+    <h2>Выберите предмет для подготовки</h2>
+    <div class="subjects">
+        {% for subject in subjects %}
+        <div class="subject-card">
+            <h3>{{ subject.title }}</h3>
+            <p>{{ subject.description }}</p>
+            <a href="{{ url_for('theory', subject_id=subject.id) }}" class="btn">Начать изучение</a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% include 'footer.html' %}

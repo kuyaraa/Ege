@@ -1,0 +1,25 @@
+{% include 'header.html' %}
+<div class="container">
+    <h2>Ваши результаты</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Задание</th>
+                <th>Оценка</th>
+                <th>Комментарий</th>
+                <th>Дата проверки</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for result in user_results %}
+            <tr>
+                <td>{{ result.title }}</td>
+                <td>{{ result.score }}</td>
+                <td>{{ result.comment }}</td>
+                <td>{{ result.date_checked }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% include 'footer.html' %}

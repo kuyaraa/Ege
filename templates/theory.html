@@ -1,0 +1,15 @@
+{% include 'header.html' %}
+<div class="container">
+    <h2>Теоретические материалы</h2>
+    <ul class="theory-list">
+        {% for material in materials %}
+        <li>
+            <h4>{{ material.title }}</h4>
+            <p> {{ material.content | safe }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('exercises', subject_id=materials[0].subject_id) }}" class="btn">Перейти к заданиям</a>
+</div>
+{% include 'footer.html' %}
+

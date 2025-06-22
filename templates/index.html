@@ -1,0 +1,32 @@
+{% include 'header.html' %}
+
+<div class="container main">
+    <h1>Добро пожаловать на платформу подготовки к ЕГЭ</h1>
+    <p>Эффективно готовьтесь к экзаменам вместе с нами! Изучайте теорию, тренируйтесь и сдавайте тесты онлайн.</p>
+    <a href="{{ url_for('subjects') }}" class="btn btn-primary">Начать подготовку</a>
+</div>
+
+{% if 'user_id' in session %}
+<div class="dashboard-container mt-5">
+    <div class="card">
+        <div class="card-body">
+            <h2>Ваш прогресс, {{ session['user_name'] }}:</h2>
+            <p><strong>Email:</strong> {{ session.get('user_email', 'Не указан') }}</p>
+            <p><strong>Роль:</strong> {{ session.get('user_role', 'user') }}</p>
+
+            <div class="progress mt-4">
+                <div class="progress-bar bg-info" role="progressbar"
+                     style="width: {{ progress_percent }}%;"
+                     aria-valuenow="{{ progress_percent }}" aria-valuemin="0" aria-valuemax="100">
+                    {{ progress_percent }}%
+                </div>
+            </div>
+            <p class="mt-2">Вы выполнили {{ completed_tasks }} из {{ total_tasks }} заданий.</p>
+
+            <a href="{{ url_for('results') }}" class="btn btn-secondary mt-3">Просмотреть результаты</a>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{% include 'footer.html' %}
